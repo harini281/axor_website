@@ -34,14 +34,7 @@ npm run preview
 - Reduced-motion CSS support and responsive layouts
 - SEO description and Open Graph metadata
 
-## Important configuration before launch
-1. Verify the legal brand usage of the supplied logo, including the “Founders’ Circle” wording visible in the artwork.
-2. Confirm the three founder LinkedIn URLs in `src/config/site.ts` are correct and approved.
-3. Add official AXOR social profile URLs and company email in `src/config/site.ts`.
-4. Replace portrait placeholders with approved professional photographs.
-5. Confirm that the WhatsApp number is the intended company contact.
-6. Add a backend/API if enquiries must be stored, routed or managed. The current form opens a prefilled WhatsApp conversation and does not persist data on a server.
-7. Replace concept demonstrations with approved project work when available. No clients, testimonials, qualifications, metrics or project outcomes have been invented.
+
 
 ## Architecture
 - `src/App.tsx` — page composition and interactive sections
@@ -58,25 +51,6 @@ The form validates required fields in the browser and opens WhatsApp with a pref
 The website includes live Three.js / React Three Fiber scenes in the hero, technology landscape, engineering approach and project exploration sections. The additional scenes are lazy-loaded, mounted near the viewport with IntersectionObserver, use a capped device pixel ratio, and respect reduced-motion preferences. CSS dimensional interactions are used for leadership and project cards.
 
 
-## Blueprint-aligned refinement (November 2026)
-
-This revision keeps the existing AXOR dark navy / warm gold visual direction and adds:
-
-- An Industries section covering the eight potential sectors in the website blueprint.
-- An Insights knowledge-centre preview organised around editorial themes (not fabricated articles).
-- An accessible native FAQ accordion.
-- Optional project budget and timeline fields in the enquiry flow.
-- A clearer hero value proposition and updated navigation anchors.
-- Montserrat headings and Inter interface/body typography, as recommended by the blueprint.
-- Responsive layouts and consistent rounded surfaces, while retaining the existing 3D scenes and page structure.
-
-### Important launch notes
-
-- Founder portrait placeholders remain until approved photographs are supplied.
-- Company email and social profile links remain unconfigured until verified details are provided.
-- The current enquiry form prepares a WhatsApp message; it does not store submissions or provide a backend email notification. A secure backend submission endpoint, server-side validation and spam protection are still required before treating it as a production enquiry system.
-- Portfolio entries are explicitly labelled concept demonstrations. Replace them with approved project evidence before publication.
-- Careers content and individual service-detail pages remain future implementation items.
 
 ## Run locally
 
