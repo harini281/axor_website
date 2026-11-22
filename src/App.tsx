@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowDown, ArrowDownRight, ArrowUpRight, BrainCircuit,
   CheckCircle2, ChevronRight, Code2, Database, Fingerprint, Globe2, Layers3,
-  Menu, MessageCircle, Network, ShieldCheck, Smartphone, Sparkles, X, Linkedin, Github, Instagram, Facebook,
+  Menu, MessageCircle, Network, ShieldCheck, Sparkles, X, Linkedin, Github, Instagram, Facebook,
 } from 'lucide-react'
 import { leadership, siteConfig } from './config/site'
 
