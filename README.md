@@ -37,7 +37,7 @@ The contact form is implemented to POST JSON to a configurable endpoint in `src/
 
 Set `siteConfig.contactEndpoint` to a verified HTTPS endpoint that validates and stores submissions, applies server-side spam protection and rate limiting, and returns a successful HTTP response. Until that endpoint is configured, form submission displays a clear not-connected message.
 
-Company email, WhatsApp and social profile values remain empty and are hidden from the public interface until verified details are supplied. Do not put private keys or secrets in frontend code or `VITE_*` variables.
+The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and social profile values remain empty and are hidden until verified details are supplied. Do not put private keys or secrets in frontend code or `VITE_*` variables.
 
 ## Content and assets
 
