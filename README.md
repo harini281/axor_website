@@ -1,67 +1,62 @@
-# AXOR Technologies — Website
+# Zentaro Technologies — Website
 
-Premium React + TypeScript + Vite company website for AXOR Technologies. The implementation extends the existing starter architecture and preserves the supplied brand asset.
-
-## Requirements
-- Node.js 20.19+ or 22.12+
-- npm
+Corporate website for Zentaro Technologies, built with React, TypeScript, Vite, React Three Fiber and Framer Motion.
 
 ## Run locally
+
+Requirements: Node.js 20.19+ or 22.12+, and npm.
+
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
 ## Production build
+
 ```bash
+npm run typecheck
 npm run build
 npm run preview
 ```
 
 ## Implemented
-- Responsive navigation and branded homepage
-- Lazy-loaded React Three Fiber hero scene with pointer-responsive metallic geometry, lighting and particles
-- Seven selectable service detail panels with capabilities and business value
-- Company introduction with vision and mission statements
-- Dedicated technology landscape grouped by AI/ML, application engineering, data platforms and delivery
-- Original AXOR principles / quote section (not presented as testimonials)
-- Founder LinkedIn links supplied by the AXOR team
-- Founding leadership cards using clearly identified initials-based portrait placeholders
-- Concept demonstrations explicitly distinguished from client case studies
-- Contact enquiry form with required-field validation and WhatsApp handoff
-- WhatsApp contact and Sri Lanka consultation availability wording
-- Configurable social profile URLs and company email in `src/config/site.ts`; unconfigured links remain inactive
-- Reduced-motion CSS support and responsive layouts
-- SEO description and Open Graph metadata
 
+- Responsive navigation with active-section state and a keyboard-operable mobile menu
+- Homepage narrative covering the company, capabilities, industries, selected work, engineering approach, guiding philosophies, leadership, insights, FAQ and contact
+- Seven service divisions: AI & Intelligent Systems, Software Engineering, Data & Analytics, Cybersecurity, Cloud & DevOps, Digital Growth, and Design & Consulting
+- Service enquiry actions that preselect the chosen service in the contact form
+- Four guiding philosophies: Kaizen, Kodawari, Kizuna and Gaman
+- Three supplied founder portraits with their configured roles and supplied LinkedIn URLs
+- Technical demonstrations clearly distinguished from verified client case studies
+- Interconnected steel-and-brass hero artwork, with secondary static 3D studies loaded near the viewport
+- Reduced motion support, responsive layouts, focus styles and accessible form feedback
 
+## Contact integration required before launch
 
-## Architecture
-- `src/App.tsx` — page composition and interactive sections
-- `src/components/HeroScene.tsx` — lazy-loaded Three.js / React Three Fiber hero visual
-- `src/config/site.ts` — contact, social and leadership configuration
-- `src/styles.css` — responsive visual system and reduced-motion rules
-- `public/images/axor-logo.jpg` — supplied AXOR logo artwork
+The contact form is implemented to POST JSON to a configurable endpoint in `src/config/site.ts`. It includes frontend validation, a sending state, success and error feedback, and does not claim success when no endpoint exists.
 
-## Contact form behaviour
-The form validates required fields in the browser and opens WhatsApp with a prefilled message. It does not currently send an email or write to a database.
+Set `siteConfig.contactEndpoint` to a verified HTTPS endpoint that validates and stores submissions, applies server-side spam protection and rate limiting, and returns a successful HTTP response. Until that endpoint is configured, form submission displays a clear not-connected message.
 
+Company email, WhatsApp and social profile values remain empty and are hidden from the public interface until verified details are supplied. Do not put private keys or secrets in frontend code or `VITE_*` variables.
 
-## Dimensional experience
-The website includes live Three.js / React Three Fiber scenes in the hero, technology landscape, engineering approach and project exploration sections. The additional scenes are lazy-loaded, mounted near the viewport with IntersectionObserver, use a capped device pixel ratio, and respect reduced-motion preferences. CSS dimensional interactions are used for leadership and project cards.
+## Content and assets
 
+- Founder portraits are the three photographs supplied for the leadership profiles.
+- The LinkedIn URLs are profile URLs previously supplied for the founders; confirm they remain current before launch.
+- Portfolio items are concept demonstrations, not client case studies. Replace them only with approved project evidence.
+- Insights are future editorial themes, not fabricated published articles.
+- No client counts, testimonials, project results, company address, email, response time or social profile has been invented.
+- A Zentaro logo asset has not been supplied yet, so the header uses a text wordmark instead of displaying the old AXOR logo.
 
+## Main files
 
-## Run locally
+- `src/App.tsx` — homepage, service interaction and enquiry workflow
+- `src/components/HeroScene.tsx` — hero sculpture
+- `src/components/AmbientScene.tsx` — static 3D section studies
+- `src/config/site.ts` — company, contact, social and founder configuration
+- `src/styles.css` — visual system and responsive styles
+- `index.html` — page metadata and font loading
 
-```bash
-npm install
-npm run dev
-```
+## Design reference credit
 
-Create a production build with `npm run build`.
-
-
-## Leadership portrait mapping
-
-The leadership cards use the approved portraits for Arudkumaran Vengadeswaran (CEO), Ravichandran Harini (CTO), and Shehani Lakshika Chandrakumar (CISO). Harini's portrait uses the latest approved white-background image; Shehani's uses the supplied office portrait.
+The visual quality pass was informed by [Unslop by Damir Sokolovsky](https://github.com/heydamir/unslop), used as a design reference under its CC BY 4.0 license.
