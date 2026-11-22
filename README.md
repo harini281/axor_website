@@ -22,13 +22,13 @@ npm run preview
 ## Implemented
 
 - Responsive navigation with active-section state and a keyboard-operable mobile menu
-- Homepage narrative covering the company, capabilities, industries, selected work, engineering approach, guiding philosophies, leadership, insights, FAQ and contact
+- Eleven-section brand story: Home, About, Philosophy, Capabilities, Industries, Our Work, Technology Landscape, Our Approach, Founding Leadership, Insights and Contact
 - Seven service divisions: AI & Intelligent Systems, Software Engineering, Data & Analytics, Cybersecurity, Cloud & DevOps, Digital Growth, and Design & Consulting
 - Service enquiry actions that preselect the chosen service in the contact form
 - Four guiding philosophies: Kaizen, Kodawari, Kizuna and Gaman
 - Three supplied founder portraits with their configured roles and supplied LinkedIn URLs
 - Concept demonstrations clearly distinguished from client case studies and measured results
-- Interconnected blue-and-silver hero artwork and one softly animated engineering model in the approach section
+- One automatically rotating Z-inspired 3D hero structure in electric blue, cyan and ice blue, with pointer response and reduced-motion support
 - Reduced motion support, responsive layouts, focus styles and accessible form feedback
 
 ## Contact integration required before launch
@@ -46,7 +46,7 @@ The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and
 - Portfolio items are concept demonstrations, not client case studies. Replace them only with approved project evidence.
 - Insights are topic directions, not fabricated published articles.
 - No client counts, testimonials, project results, company address, email, response time or social profile has been invented.
-- The supplied Zentaro mark is referenced in the header and footer. The current repository uses the vector mark asset at `public/images/zentaro-mark.svg`; replace it with the original PNG when the image upload is approved.
+- The supplied official ZENTARO logo mark is used from `public/images/zentaro-mark.webp` in the navigation, footer and browser icon. The original aspect ratio is preserved.
 
 ## Main files
 
@@ -59,4 +59,4 @@ The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and
 
 ## Design reference credit
 
-The visual refinement follows the product-led direction of [Unslop by Damir Sokolovsky](https://github.com/heydamir/unslop): quiet ink surfaces, one restrained brand accent, clear type hierarchy and purposeful motion. The supplied transparent Zentaro mark is used in the header, footer and browser tab icon; its blue is the source of the restrained interface accent. Unslop is credited under its CC BY 4.0 license.
+The visual refinement follows the product-led direction of [Unslop by Damir Sokolovsky](https://github.com/heydamir/unslop): clear hierarchy, restrained visual effects, readable copy and purposeful motion. The official ZENTARO mark determines the midnight navy, electric blue, cyan and ice blue palette.
