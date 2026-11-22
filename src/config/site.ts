@@ -1,16 +1,19 @@
 export const siteConfig = {
-  companyName: 'AXOR Technologies',
-  whatsappNumber: '94770830536',
-  whatsappDisplay: '+94 77 083 0536',
-  // Add verified AXOR profile URLs here. Empty values intentionally keep links inactive.
+  companyName: 'Zentaro Technologies',
+  brandName: 'ZENTARO',
+  // Configure only after a verified secure backend endpoint is available.
+  contactEndpoint: '',
+  // Optional contact channels stay hidden until verified by the company.
+  contactEmail: '',
+  whatsappNumber: '',
+  whatsappDisplay: '',
   social: {
     linkedin: '',
     github: '',
     instagram: '',
     facebook: '',
+    x: '',
   },
-  // Add a verified company email before launch.
-  contactEmail: '',
 }
 
 export const leadership = [
@@ -20,7 +23,7 @@ export const leadership = [
     portrait: '/images/arudkumaran-vengadeswaran.jpg',
     initials: 'AV',
     focus: 'Business strategy, company vision, leadership, partnerships and business development.',
-    intro: 'Guiding AXOR’s direction and connecting ambitious business goals with the right technology opportunities.',
+    intro: 'Guiding Zentaro’s direction and connecting business goals with thoughtful technology decisions.',
     linkedin: 'https://www.linkedin.com/in/arudkumaran-vengadeswaran/',
   },
   {
