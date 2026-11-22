@@ -28,10 +28,10 @@ const technologyGroups = [
 
 
 const principles = [
-  { number: '01', kanji: '改善', name: 'Kaizen', title: 'Continuous Improvement', description: 'Small, consistent improvements create stronger systems. We learn from feedback, review what works and make each iteration more useful.', application: 'Learning, iteration and ongoing product improvement.' },
-  { number: '02', kanji: 'こだわり', name: 'Kodawari', title: 'Care in the Details', description: 'We pay attention to the details that shape usability, reliability and maintainability. Quality comes from deliberate choices, not decoration.', application: 'Thoughtful design and engineering quality.' },
-  { number: '03', kanji: '絆', name: 'Kizuna', title: 'Connection & Trust', description: 'Good work depends on trust. We listen carefully, share context early and work with clients and teammates as one connected team.', application: 'Clear communication and collaborative delivery.' },
-  { number: '04', kanji: '我慢', name: 'Gaman', title: 'Resilience & Perseverance', description: 'Complex work rarely moves in a straight line. We stay patient, work through constraints and keep making considered progress.', application: 'Steady problem-solving through difficult challenges.' },
+  { number: '01', name: 'CURIOSITY', title: 'Think Beyond the Obvious.', description: 'We question assumptions, explore new perspectives and remain curious about what technology can make possible.' },
+  { number: '02', name: 'PURPOSE', title: 'Create With Intention.', description: 'We believe every solution should address a meaningful need. We focus on understanding problems before engineering the answers.' },
+  { number: '03', name: 'INTEGRITY', title: 'Trust Is Part of Every Solution.', description: 'We value transparency, responsibility and thoughtful engineering. The way technology is built matters just as much as what it achieves.' },
+  { number: '04', name: 'EVOLUTION', title: 'Progress Never Stands Still.', description: 'We embrace change, learn from experience and continuously improve. Every challenge is an opportunity to develop better thinking and stronger solutions.' },
 ]
 
 const projects = [
@@ -175,18 +175,34 @@ function App() {
 
         <section className="principles section-pad" id="principles">
           <div className="section-index">02 / OUR PHILOSOPHY</div>
-          <div className="principles-heading">
-            <h2>How we work<br /><em>matters.</em></h2>
-            <p>These four ideas give our work its character. They shape how we improve, how carefully we engineer, how we work with people and how we respond when the problem gets difficult.</p>
+          <div className="philosophy-intro">
+            <div>
+              <span className="philosophy-overline">THE MINDSET BEHIND THE METHOD</span>
+              <h2>We Believe in Building<br /><em>What Comes Next.</em></h2>
+            </div>
+            <p>Technology is constantly evolving. So should the way we think, create and solve problems.<br /><br />At ZENTARO, our philosophy is built around curiosity, purpose, integrity and continuous evolution. These beliefs shape how we approach challenges, collaborate with others and transform ideas into meaningful technology.</p>
           </div>
-          <div className="principles-grid">
-            {principles.map((principle) => <article key={principle.number}>
-              <div className="principle-mark"><span>{principle.number}</span><strong lang="ja">{principle.kanji}</strong></div>
-              <h3>{principle.name}</h3>
-              <h4>{principle.title}</h4>
+          <div className="philosophy-grid">
+            {principles.map((principle) => <article className="philosophy-card" key={principle.number}>
+              <div className="philosophy-card-top">
+                <span className="philosophy-number">{principle.number}</span>
+                <span className="philosophy-category">{principle.name}</span>
+              </div>
+              <h3>{principle.title}</h3>
               <p>{principle.description}</p>
-              <div className="principle-application"><span>Application</span><p>{principle.application}</p></div>
+              <span className="philosophy-card-line" aria-hidden="true" />
             </article>)}
+          </div>
+          <div className="philosophy-belief">
+            <div className="philosophy-belief-label"><span /> OUR BELIEF</div>
+            <div className="philosophy-belief-copy">
+              <h3>We don’t believe in building technology simply because it can be built.</h3>
+              <p>We believe in understanding why it matters, exploring how it can be better and creating something that makes a difference.</p>
+            </div>
+            <div className="philosophy-signoff">
+              <b>ZENTARO TECHNOLOGIES</b>
+              <span>Build with curiosity. Lead with purpose. Evolve without limits.</span>
+            </div>
           </div>
         </section>
 
