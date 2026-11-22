@@ -286,3 +286,53 @@
   .brand-copy b { font-size:16px; }
   .footer-main:not(.has-social) { grid-template-columns:1fr; gap:16px; }
 }
+
+
+/* Official Zentaro mark */
+.brand img.brand-mark {
+  display:block;
+  width:58px;
+  height:40px;
+  max-width:none;
+  object-fit:contain;
+  border:0;
+  border-radius:0;
+  flex:none;
+}
+.brand .brand-copy {
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  line-height:1;
+}
+.brand .brand-copy b {
+  font:600 18px/1 Montserrat,sans-serif;
+  letter-spacing:.12em;
+  color:var(--cream);
+}
+.brand .brand-copy small {
+  font:400 11px/1 Inter,sans-serif;
+  letter-spacing:.02em;
+  color:#a3a9b8;
+  margin-top:0;
+}
+.footer-brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font:600 25px/1 Montserrat,sans-serif;
+  letter-spacing:.12em;
+}
+.footer-brand img {
+  display:block;
+  width:58px;
+  height:40px;
+  object-fit:contain;
+  flex:none;
+}
+@media(max-width:650px) {
+  .brand img.brand-mark { width:48px; height:34px; }
+  .brand .brand-copy b { font-size:16px; }
+  .footer-brand { font-size:21px; gap:11px; }
+  .footer-brand img { width:48px; height:34px; }
+}
