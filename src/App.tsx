@@ -124,6 +124,7 @@ function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="ZENTARO Technologies home">
+          <img className="brand-mark" src="/images/zentaro-mark.webp" alt="" width="58" height="40" />
           <span className="brand-copy"><b>ZENTARO</b><small>Technologies</small></span>
         </a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>
@@ -372,7 +373,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className={socialItems.some(item => item.url) ? 'footer-main has-social' : 'footer-main'}><a className="footer-brand" href="#top">ZENTARO</a><p>Engineering intelligence.<br />Building what’s next.</p>{socialItems.some(item => item.url) && <div className="footer-social"><span>Connect</span>{socialItems.filter(item => item.url).map(item => { const Icon = item.Icon; return <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={16} /></a> })}</div>}</div>
+        <div className={socialItems.some(item => item.url) ? 'footer-main has-social' : 'footer-main'}><a className="footer-brand" href="#top" aria-label="Zentaro Technologies home"><img src="/images/zentaro-mark.webp" alt="" width="58" height="40" /><span>ZENTARO</span></a><p>Engineering intelligence.<br />Building what’s next.</p>{socialItems.some(item => item.url) && <div className="footer-social"><span>Connect</span>{socialItems.filter(item => item.url).map(item => { const Icon = item.Icon; return <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={16} /></a> })}</div>}</div>
         <div className="footer-bottom"><a href="#faq">FAQ</a><a href="#contact">Careers and enquiries</a><span>© {new Date().getFullYear()} ZENTARO TECHNOLOGIES. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP <ArrowUpRight size={13} /></a><span>ASIA / COLOMBO · UTC+05:30</span></div>
       </footer>
     </div>
