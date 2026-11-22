@@ -7,7 +7,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
 
-/* AXOR brand-story additions */
+/* Zentaro brand-story additions */
 .vision-mission{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:48px}
 .vision-mission article{padding:28px 30px;border:1px solid rgba(16,28,44,.17);background:rgba(255,255,255,.25)}
 .vision-mission article>span{font-size:8px;letter-spacing:.2em;color:#98702e;font-weight:700}
@@ -40,7 +40,7 @@
 @media(max-width:650px){.vision-mission{grid-template-columns:1fr}.technology-grid{grid-template-columns:1fr}.technology-group{border-right:0;border-bottom:1px solid var(--line);min-height:0}.technology-group:last-child{border-bottom:0}.technology-group h3{margin:17px 0 14px}.beliefs-heading{display:block}.beliefs-heading p{margin-top:22px}.belief-grid{grid-template-columns:1fr}.belief-grid article,.belief-grid article:first-child{padding:24px 0;border-right:0;border-bottom:1px solid rgba(16,28,44,.16)}.belief-grid article:last-child{border-bottom:0}.belief-grid blockquote{margin:20px 0 18px}}
 
 
-/* AXOR dimensional experience — real WebGL scenes embedded across the page */
+/* Zentaro dimensional experience — real WebGL scenes embedded across the page */
 .ambient-scene{position:relative;width:100%;height:100%;min-height:220px;isolation:isolate;pointer-events:auto}
 .ambient-scene canvas{position:absolute!important;inset:0;width:100%!important;height:100%!important;display:block}
 .ambient-fallback{display:grid;place-items:center;width:100%;height:100%;min-height:220px;color:#d6b878;font-size:9px;letter-spacing:.22em}
@@ -86,12 +86,12 @@
 @media(max-width:650px){.technology-showcase .technology-grid{grid-template-columns:1fr}.technology-object{min-height:280px}.approach-visual{height:300px}.approach-visual .ambient-scene{right:-5%;width:70%;opacity:.8}.approach-visual-copy{left:7%;top:34%}.approach-visual-copy b{font-size:22px}.approach-visual-copy small{max-width:190px;line-height:1.7}.work-visual-band{height:250px;padding:25px 7%}.work-visual-band .ambient-scene{right:-10%;width:72%;opacity:.85}.work-visual-band>div b{font-size:22px}.work-visual-index{font-size:7px;right:14px}}
 @media(prefers-reduced-motion:reduce){.project-art-orbit,.portrait-orbit{animation:none!important}.project-card:hover .project-art{transform:none}}
 
-/* AXOR subtle corner polish — preserves the existing visual direction */
+/* Zentaro subtle corner polish — preserves the existing visual direction */
 :root {
-  --axor-radius-sm: 10px;
-  --axor-radius-md: 14px;
-  --axor-radius-card: 18px;
-  --axor-radius-lg: 22px;
+  --zentaro-radius-sm: 10px;
+  --zentaro-radius-md: 14px;
+  --zentaro-radius-card: 18px;
+  --zentaro-radius-lg: 22px;
 }
 
 /* Controls and interactive surfaces */
@@ -101,7 +101,7 @@
 .social-disabled,
 .detail-icon,
 .project-art-core {
-  border-radius: var(--axor-radius-sm);
+  border-radius: var(--zentaro-radius-sm);
 }
 
 /* Cards, panels and larger visual blocks */
@@ -114,7 +114,7 @@
 .technology-showcase .technology-grid > *,
 .approach-visual,
 .work-visual-band {
-  border-radius: var(--axor-radius-card);
+  border-radius: var(--zentaro-radius-card);
   overflow: hidden;
 }
 
@@ -125,14 +125,14 @@
 .work-visual-band .ambient-scene,
 .approach-visual .ambient-scene {
   overflow: hidden;
-  border-radius: var(--axor-radius-md);
+  border-radius: var(--zentaro-radius-md);
 }
 
 /* Form fields feel softer without changing their colours */
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  border-radius: var(--axor-radius-sm);
+  border-radius: var(--zentaro-radius-sm);
 }
 
 /* A restrained, consistent finish for the larger contact panel */
@@ -150,7 +150,7 @@
   .technology-showcase .technology-grid > *,
   .approach-visual,
   .work-visual-band {
-    border-radius: var(--axor-radius-md);
+    border-radius: var(--zentaro-radius-md);
   }
 }
 
@@ -168,7 +168,7 @@
 .insights .section-heading>p{color:#596473}
 .insights .section-heading h2 em{color:#a9792f}
 .insight-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.insight-grid article{padding:24px 20px;border:1px solid rgba(16,28,44,.16);background:rgba(255,255,255,.25);border-radius:var(--axor-radius-card)}
+.insight-grid article{padding:24px 20px;border:1px solid rgba(16,28,44,.16);background:rgba(255,255,255,.25);border-radius:var(--zentaro-radius-card)}
 .insight-grid article>span{color:#98702e}
 .insight-grid h3{font:600 14px/1.4 Montserrat;margin:24px 0 12px;letter-spacing:.01em}
 .insight-grid p{color:#596473;min-height:72px}
@@ -185,7 +185,7 @@
 @media(max-width:900px){.industry-grid,.insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.industry-grid,.insight-grid{grid-template-columns:1fr}.industry-grid article{min-height:0;padding:22px 18px}.insight-grid p{min-height:0}.faq-list summary{font-size:13px}}
 
-/* Readability refinement: a modest type-size lift while keeping AXOR's visual hierarchy */
+/* Readability refinement: a modest type-size lift while keeping Zentaro's visual hierarchy */
 .hero-lede{font-size:16px;line-height:1.8}
 .nav-links{font-size:13px}
 .text-link{font-size:12px}
