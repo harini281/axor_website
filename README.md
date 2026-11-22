@@ -28,12 +28,12 @@ npm run preview
 - Four guiding philosophies: Kaizen, Kodawari, Kizuna and Gaman
 - Three supplied founder portraits with their configured roles and supplied LinkedIn URLs
 - Concept demonstrations clearly distinguished from client case studies and measured results
-- Interconnected steel-and-brass hero artwork, with secondary static 3D studies loaded near the viewport
+- Interconnected blue-and-silver hero artwork and one softly animated engineering model in the approach section
 - Reduced motion support, responsive layouts, focus styles and accessible form feedback
 
 ## Contact integration required before launch
 
-The contact form is implemented to POST JSON to a configurable endpoint in `src/config/site.ts`. It includes frontend validation, a sending state, success and error feedback, and does not claim success when no endpoint exists.
+The contact form is prepared to POST JSON to a configurable endpoint in `src/config/site.ts`. It includes browser-side validation, a sending state, success and error feedback. Submissions remain disabled until a real secure endpoint is configured.
 
 Set `siteConfig.contactEndpoint` to a verified HTTPS endpoint that validates and stores submissions, applies server-side spam protection and rate limiting, and returns a successful HTTP response. Until that endpoint is configured, form submission displays a clear not-connected message.
 
