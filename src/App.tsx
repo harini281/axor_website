@@ -8,7 +8,6 @@ import {
 import { leadership, siteConfig } from './config/site'
 
 const HeroScene = lazy(() => import('./components/HeroScene'))
-const AmbientScene = lazy(() => import('./components/AmbientScene'))
 
 const services = [
   { n: '01', icon: BrainCircuit, title: 'AI & Intelligent Systems', line: 'Turn knowledge and repetitive work into useful intelligence', detail: 'When teams spend too much time searching for information or repeating the same steps, AI can help in carefully chosen places. We shape AI-enabled product features and workflows around real business context, with human review wherever judgement matters.', capabilities: ['LLM-powered product features and knowledge assistants', 'AI agents and human-reviewed workflow automation', 'Machine learning and computer vision applications'], value: 'Help people find relevant information, reduce avoidable manual steps and make more consistent decisions—without treating automation as a substitute for human judgement.' },
@@ -62,7 +61,7 @@ function App() {
   const [formMessage, setFormMessage] = useState('')
   const reducedMotion = useReducedMotion()
   const navItems = useMemo(() => [
-    ['About', '#about'], ['Services', '#services'], ['Industries', '#industries'], ['Technology', '#technology'], ['Our Work', '#work'], ['Insights', '#insights'],
+    ['Home', '#top'], ['About', '#about'], ['Capabilities', '#capabilities'], ['Industries', '#industries'], ['Our Work', '#work'], ['Technology', '#technology'], ['Insights', '#insights'], ['Contact', '#contact'],
   ], [])
 
   const whatsappUrl = (message: string) => `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`
@@ -122,7 +121,7 @@ function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="ZENTARO Technologies home">
-          <img className="brand-mark" src="/images/zentaro-mark.webp" alt="" width="58" height="40" />
+          <img className="brand-mark" src="/images/zentaro-mark.webp" alt="ZENTARO Technologies logo" width="72" height="50" loading="eager" decoding="async" />
           <span className="brand-copy"><b>ZENTARO</b><small>Technologies</small></span>
         </a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>
@@ -139,17 +138,18 @@ function App() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
             <motion.div initial="hidden" animate="visible" variants={reveal}>
-              <div className="eyebrow"><span /> Digital engineering for what comes next</div>
+              <div className="eyebrow"><span /> Build with curiosity. Lead with purpose. Evolve without limits.</div>
               <h1>Engineering <em>Intelligence.</em><br />Building What's Next.</h1>
               <p className="hero-lede">From intelligent software and automation to secure digital platforms, we turn business challenges into useful products and dependable systems.</p>
+              <p className="hero-brand-promise">Engineering Intelligence. Building What’s Next.</p>
               <div className="hero-actions">
-                <a className="button button-gold" href="#services">Explore Capabilities <ArrowUpRight size={17} /></a>
+                <a className="button button-gold" href="#capabilities">Explore Capabilities <ArrowUpRight size={17} /></a>
                 <a className="text-link" href="#contact">Discuss a Project <ArrowDownRight size={17} /></a>
               </div>
             </motion.div>
           </div>
           <div className="hero-visual">
-            <Suspense fallback={<div className="scene-fallback"><span>Z</span><small>ENGINEERING INTELLIGENCE</small></div>}>
+            <Suspense fallback={<div className="scene-fallback"><img src="/images/zentaro-mark.webp" alt="ZENTARO logo" /><small>ENGINEERING INTELLIGENCE</small></div>}>
               <HeroScene reducedMotion={Boolean(reducedMotion)} />
             </Suspense>
             <div className="hero-visual-index">Figure 01 <span>Interconnected systems</span></div>
@@ -173,9 +173,26 @@ function App() {
           </motion.div>
         </section>
 
-        <section className="capabilities section-pad" id="services">
+        <section className="principles section-pad" id="principles">
+          <div className="section-index">02 / OUR PHILOSOPHY</div>
+          <div className="principles-heading">
+            <h2>How we work<br /><em>matters.</em></h2>
+            <p>These four ideas give our work its character. They shape how we improve, how carefully we engineer, how we work with people and how we respond when the problem gets difficult.</p>
+          </div>
+          <div className="principles-grid">
+            {principles.map((principle) => <article key={principle.number}>
+              <div className="principle-mark"><span>{principle.number}</span><strong lang="ja">{principle.kanji}</strong></div>
+              <h3>{principle.name}</h3>
+              <h4>{principle.title}</h4>
+              <p>{principle.description}</p>
+              <div className="principle-application"><span>Application</span><p>{principle.application}</p></div>
+            </article>)}
+          </div>
+        </section>
+
+        <section className="capabilities section-pad" id="capabilities">
           <div className="section-heading">
-            <div><div className="section-index">02 / Services</div><h2>Solve the right problem.<br /><em>Build what fits.</em></h2></div>
+            <div><div className="section-index">03 / CAPABILITIES</div><h2>Solve the right problem.<br /><em>Build what fits.</em></h2></div>
             <p>From a focused feature to a connected platform, we combine the disciplines needed to design, build and improve digital systems.</p>
           </div>
           <div className="services-experience">
@@ -201,7 +218,7 @@ function App() {
 
         <section className="industries section-pad" id="industries">
           <div className="section-heading">
-            <div><div className="section-index">03 / Industries</div><h2>Technology shaped<br /><em>around real work.</em></h2></div>
+            <div><div className="section-index">04 / INDUSTRIES</div><h2>Technology shaped<br /><em>around real work.</em></h2></div>
             <p>The same technology rarely fits every sector. We look at the workflows, information needs and operating constraints behind each organisation before shaping an approach.</p>
           </div>
           <div className="industry-grid">
@@ -221,7 +238,7 @@ function App() {
 
         <section className="work section-pad" id="work">
           <div className="section-heading">
-            <div><div className="section-index">04 / Solution explorations</div><h2>Ideas shaped into<br /><em>working concepts.</em></h2></div>
+            <div><div className="section-index">05 / OUR WORK</div><h2>Ideas shaped into<br /><em>working concepts.</em></h2></div>
             <p>These concept demonstrations show how we think through product and workflow problems. They are examples of possible solutions—not client case studies or claims of deployed results.</p>
           </div>
           
@@ -235,7 +252,7 @@ function App() {
 
         <section className="technology section-pad" id="technology">
           <div className="section-heading">
-            <div><div className="section-index">05 / Technology landscape</div><h2>A considered stack.<br /><em>For the problem at hand.</em></h2></div>
+            <div><div className="section-index">06 / TECHNOLOGY LANDSCAPE</div><h2>A considered stack.<br /><em>For the problem at hand.</em></h2></div>
             <p>We choose tools around product requirements, integrations, team capabilities and the environment a system needs to run in. These are technologies we work across—not a fixed stack for every project.</p>
           </div>
           <div className="technology-showcase">
@@ -251,7 +268,7 @@ function App() {
         </section>
 
         <section className="approach section-pad" id="approach">
-          <div className="section-index">06 / How we work</div>
+          <div className="section-index">07 / OUR APPROACH</div>
           <div className="approach-layout">
             <h2>Understand first.<br /><em>Build with</em><br />intent.</h2>
             <div className="approach-copy"><p className="large-copy">Good engineering starts before the first line of code.</p><p>We make the problem clear, agree on a practical scope, build in manageable steps and validate the result against the need that started the work.</p>
@@ -259,39 +276,17 @@ function App() {
             </div>
           </div>
           <div className="approach-values"><div><ShieldCheck /><b>Security-minded</b><span>Considered from the beginning.</span></div><div><Fingerprint /><b>Human-centred</b><span>Designed around real people.</span></div><div><Globe2 /><b>Built to scale</b><span>Designed to evolve.</span></div></div>
-          <div className="approach-visual">
-            <div className="approach-visual-copy"><span>Engineering in layers</span><b>From a clear foundation<br />to a connected system.</b><small>Architecture · Integration · Validation · Evolution</small></div>
-            <Suspense fallback={<div className="ambient-fallback">STRUCTURE / 03</div>}>
-              <AmbientScene reducedMotion={Boolean(reducedMotion)} />
-            </Suspense>
-            <span className="approach-visual-index">Zentaro / Engineering model 03</span>
-          </div>
         </section>
 
         
 
         
 
-        <section className="principles section-pad" id="principles">
-          <div className="section-index">07 / The principles that guide us</div>
-          <div className="principles-heading">
-            <h2>How we work<br /><em>matters.</em></h2>
-            <p>These four ideas give our work its character. They shape how we improve, how carefully we engineer, how we work with people and how we respond when the problem gets difficult.</p>
-          </div>
-          <div className="principles-grid">
-            {principles.map((principle) => <article key={principle.number}>
-              <div className="principle-mark"><span>{principle.number}</span><strong lang="ja">{principle.kanji}</strong></div>
-              <h3>{principle.name}</h3>
-              <h4>{principle.title}</h4>
-              <p>{principle.description}</p>
-              <div className="principle-application"><span>Application</span><p>{principle.application}</p></div>
-            </article>)}
-          </div>
-        </section>
+        
 
         <section className="leadership section-pad" id="leadership">
           <div className="section-heading">
-            <div><div className="section-index">08 / Founding leadership</div><h2>The people<br /><em>behind Zentaro.</em></h2></div>
+            <div><div className="section-index">08 / FOUNDING LEADERSHIP</div><h2>The people<br /><em>behind Zentaro.</em></h2></div>
             <p>A founder-led team spanning business direction, product engineering and information security.</p>
           </div>
           <div className="leadership-grid">
@@ -309,7 +304,7 @@ function App() {
 
         <section className="insights section-pad" id="insights">
           <div className="section-heading">
-            <div><div className="section-index">09 / Perspectives & insights</div><h2>Questions worth<br /><em>exploring.</em></h2></div>
+            <div><div className="section-index">09 / INSIGHTS</div><h2>Questions worth<br /><em>exploring.</em></h2></div>
             <p>We are building a practical knowledge library around the decisions businesses and product teams face as they adopt AI, design software and connect their systems.</p>
           </div>
           <div className="insight-grid">
@@ -322,19 +317,10 @@ function App() {
           </div>
         </section>
 
-        <section className="faq section-pad" id="faq">
-          <div className="section-heading"><div><div className="section-index">10 / FAQ</div><h2>Good questions.<br /><em>Clear answers.</em></h2></div><p>Straightforward answers to help you decide whether Zentaro is the right partner for your next step.</p></div>
-          <div className="faq-list">
-            <details><summary>What kind of organisations can work with Zentaro?</summary><p>We can explore projects with startups, small and medium-sized businesses and established teams. The important questions are the problem to solve, the people involved, the constraints and whether our capabilities fit.</p></details>
-            <details><summary>What happens after I send an enquiry?</summary><p>We use the information you share to understand the challenge and the service you are considering. A first conversation can clarify the context, intended users, priorities and constraints before a scope or next step is proposed.</p></details>
-            <details><summary>Can you work with systems we already use?</summary><p>Where it makes sense, yes. The right approach may be to integrate with an existing platform, improve a workflow, modernise part of a system or build something new. The choice depends on the current environment and the problem.</p></details>
-            <details><summary>How do you choose the technologies for a project?</summary><p>We consider the product requirements, integrations, security needs, performance expectations, team capabilities and long-term maintenance. We do not assume one technology stack is right for every project.</p></details>
-            <details><summary>Are the projects shown on this website client case studies?</summary><p>No. Items labelled “Concept demonstration” are illustrative explorations. They do not claim a client engagement, production deployment or measured business result.</p></details>
-          </div>
-        </section>
+        
 
         <section className="contact section-pad" id="contact">
-          <div className="section-index">11 / Contact</div>
+          <div className="section-index">10 / CONTACT</div>
           <div className="contact-layout">
             <div className="contact-copy"><h2>Have a challenge<br /><em>worth solving?</em></h2><p>Share what you are trying to improve, build or understand. We will use that context to explore whether there is a useful next step together.</p>
               <div className="contact-note"><p>A useful first conversation starts with three things: what is happening today, where it gets in the way, and what a better outcome would look like.</p></div>
@@ -349,7 +335,7 @@ function App() {
               <label>Business email<input name="email" type="email" autoComplete="email" placeholder="you@company.com" required /></label>
               <label>Company or organisation<input name="company" autoComplete="organization" placeholder="Your organisation" required /></label>
               <label>Service of interest<select name="service" required value={selectedService} onChange={(event) => setSelectedService(event.currentTarget.value)}><option value="" disabled>Select a capability</option>{services.map(service => <option key={service.n} value={service.title}>{service.title}</option>)}</select></label>
-              <label>Project budget <span className="optional">OPTIONAL</span><select name="budget" defaultValue=""><option value="">Not decided yet</option><option>Under USD 1,000</option><option>USD 1,000–5,000</option><option>USD 5,000–15,000</option><option>USD 15,000+</option><option>Prefer to discuss</option></select></label>
+              <label>Project budget <span className="optional">OPTIONAL</span><select name="budget" defaultValue=""><option value="">Not decided yet</option><option value="Below LKR 350,000">Below LKR 350,000</option><option value="LKR 350,000–1,650,000">LKR 350,000–1,650,000</option><option value="LKR 1,650,001–5,000,000">LKR 1,650,001–5,000,000</option><option value="Above LKR 5,000,000">Above LKR 5,000,000</option><option value="Prefer to discuss">Prefer to discuss</option></select></label>
               <label>Expected timeline <span className="optional">OPTIONAL</span><select name="timeline" defaultValue=""><option value="">Not decided yet</option><option>Immediately</option><option>Within 1 month</option><option>1–3 months</option><option>3–6 months</option><option>Exploring / planning</option></select></label>
               <label>Project description<textarea name="description" placeholder="What is happening today, and what would you like to change?" required minLength={15} rows={4} /></label>
               <button className="button button-gold form-submit" type="submit" disabled={formState === 'submitting'}>{formState === 'submitting' ? 'Sending enquiry' : 'Send enquiry'} <ArrowUpRight size={17} /></button>
@@ -361,8 +347,8 @@ function App() {
       </main>
 
       <footer className="footer">
-        <div className={socialItems.some(item => item.url) ? 'footer-main has-social' : 'footer-main'}><a className="footer-brand" href="#top" aria-label="Zentaro Technologies home"><img src="/images/zentaro-mark.webp" alt="" width="58" height="40" /><span>ZENTARO</span></a><p>Engineering intelligence.<br />Building what’s next.</p>{socialItems.some(item => item.url) && <div className="footer-social"><span>Connect</span>{socialItems.filter(item => item.url).map(item => { const Icon = item.Icon; return <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={16} /></a> })}</div>}</div>
-        <div className="footer-bottom"><a href="#faq">FAQ</a><a href="#contact">Start a conversation</a><span>© {new Date().getFullYear()} ZENTARO TECHNOLOGIES. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP <ArrowUpRight size={13} /></a><span>ASIA / COLOMBO · UTC+05:30</span></div>
+        <div className={socialItems.some(item => item.url) ? 'footer-main has-social' : 'footer-main'}><a className="footer-brand" href="#top" aria-label="ZENTARO Technologies home"><img src="/images/zentaro-mark.webp" alt="ZENTARO Technologies official logo" width="72" height="50" loading="eager" decoding="async" /></a><p>Engineering intelligence.<br />Building what’s next.</p>{socialItems.some(item => item.url) && <div className="footer-social"><span>Connect</span>{socialItems.filter(item => item.url).map(item => { const Icon = item.Icon; return <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={16} /></a> })}</div>}</div>
+        <div className="footer-bottom"><a href="#capabilities">Capabilities</a><a href="#contact">Start a conversation</a><span>© {new Date().getFullYear()} ZENTARO TECHNOLOGIES. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP <ArrowUpRight size={13} /></a><span>ASIA / COLOMBO · UTC+05:30</span></div>
       </footer>
     </div>
   )
