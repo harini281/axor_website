@@ -226,13 +226,7 @@ function App() {
             <div><div className="section-index">06 / Selected work</div><h2>Ideas made<br /><em>tangible.</em></h2></div>
             <p>Selected technical demonstrations show the kinds of problems we explore. These concepts are not presented as client case studies.</p>
           </div>
-          <div className="work-visual-band">
-            <div><span>Prototype / exploration</span><b>Turning abstract challenges<br />into tangible systems.</b></div>
-            <Suspense fallback={<div className="ambient-fallback">ZENTARO / LAB</div>}>
-              <AmbientScene variant="orbit" />
-            </Suspense>
-            <span className="work-visual-index">INTERACTIVE STUDIES · 001—003</span>
-          </div>
+          
           <div className="project-grid">
             {projects.map((project, index) => <motion.article className={`project-card project-${index + 1}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal} whileHover={reducedMotion ? undefined : { y: -8, rotateX: 2, rotateY: index === 1 ? -1.5 : 1.5 }}>
               <div className="project-art"><div className="project-art-core">{index === 0 ? <BrainCircuit /> : index === 1 ? <Network /> : <Database />}</div><span>ZENTARO / CONCEPT 0{index + 1}</span><div className="project-art-orbit" /></div>
@@ -253,12 +247,7 @@ function App() {
                 <div className="technology-tags">{group.tools.map(tool => <span key={tool}>{tool}</span>)}</div>
               </motion.article>)}
             </div>
-            <div className="technology-object">
-              <Suspense fallback={<div className="ambient-fallback">ZENTARO / SYSTEMS</div>}>
-                <AmbientScene variant="intelligence" />
-              </Suspense>
-              <div className="object-caption"><span>Figure 02 / Intelligence core</span><b>Systems that connect.<br />Ideas that compound.</b></div>
-            </div>
+            
           </div>
           <p className="technology-note">Our stack is selected case by case, with attention to maintainability, security, performance and long-term fit.</p>
         </section>
@@ -275,7 +264,7 @@ function App() {
           <div className="approach-visual">
             <div className="approach-visual-copy"><span>Engineering in layers</span><b>From a clear foundation<br />to a connected system.</b><small>Architecture · Integration · Validation · Evolution</small></div>
             <Suspense fallback={<div className="ambient-fallback">STRUCTURE / 03</div>}>
-              <AmbientScene variant="architecture" />
+              <AmbientScene reducedMotion={Boolean(reducedMotion)} />
             </Suspense>
             <span className="approach-visual-index">Zentaro / Engineering model 03</span>
           </div>
