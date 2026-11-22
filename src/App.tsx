@@ -121,8 +121,7 @@ function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="topbar">
         <a className="brand" href="#top" aria-label="ZENTARO Technologies home">
-          <img className="brand-mark" src="/images/zentaro-mark.webp" alt="ZENTARO Technologies logo" width="72" height="50" loading="eager" decoding="async" />
-          <span className="brand-copy"><b>ZENTARO</b><small>Technologies</small></span>
+          <img className="brand-mark" src="/images/zentaro-logo.webp" alt="ZENTARO Technologies official logo" width="240" height="77" loading="eager" decoding="async" />
         </a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>
           {menuOpen ? <X /> : <Menu />}

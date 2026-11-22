@@ -291,9 +291,9 @@
 /* Official Zentaro mark */
 .brand img.brand-mark {
   display:block;
-  width:58px;
-  height:40px;
-  max-width:none;
+  width:230px;
+  height:auto;
+  max-width:min(28vw, 230px);
   object-fit:contain;
   border:0;
   border-radius:0;
@@ -331,7 +331,7 @@
   flex:none;
 }
 @media(max-width:650px) {
-  .brand img.brand-mark { width:48px; height:34px; }
+  .brand img.brand-mark { width:190px; max-width:52vw; height:auto; }
   .brand .brand-copy b { font-size:16px; }
   .footer-brand { font-size:21px; gap:11px; }
   .footer-brand img { width:48px; height:34px; }
