@@ -183,7 +183,7 @@ function App() {
             <p>Technology is constantly evolving. So should the way we think, create and solve problems.<br /><br />At ZENTARO, our philosophy is built around curiosity, purpose, integrity and continuous evolution. These beliefs shape how we approach challenges, collaborate with others and transform ideas into meaningful technology.</p>
           </div>
           <div className="philosophy-grid">
-            {principles.map((principle) => <article className="philosophy-card" key={principle.number}>
+            {principles.map((principle) => <article className="philosophy-card" key={principle.number} data-number={principle.number}>
               <div className="philosophy-card-top">
                 <span className="philosophy-number">{principle.number}</span>
                 <span className="philosophy-category">{principle.name}</span>
