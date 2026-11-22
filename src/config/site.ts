@@ -4,7 +4,7 @@ export const siteConfig = {
   // Configure only after a verified secure backend endpoint is available.
   contactEndpoint: '',
   // Optional contact channels stay hidden until verified by the company.
-  contactEmail: '',
+  contactEmail: 'arudkumaranv@gmail.com',
   whatsappNumber: '',
   whatsappDisplay: '',
   social: {
