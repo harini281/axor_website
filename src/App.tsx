@@ -177,7 +177,7 @@ function App() {
           <div className="philosophy-intro">
             <div>
               <span className="philosophy-overline">THE MINDSET BEHIND THE METHOD</span>
-              <h2>We Believe in Building<br /><em>What Comes Next.</em></h2>
+              <h2>More Than Technology.<br /><em>A Way of Thinking.</em></h2>
             </div>
             <p>Technology is constantly evolving. So should the way we think, create and solve problems.<br /><br />At ZENTARO, our philosophy is built around curiosity, purpose, integrity and continuous evolution. These beliefs shape how we approach challenges, collaborate with others and transform ideas into meaningful technology.</p>
           </div>
