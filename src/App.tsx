@@ -151,7 +151,7 @@ function App() {
           </div>
           <div className="hero-visual">
             <Suspense fallback={<div className="scene-fallback"><span>AX</span><small>ENGINEERING INTELLIGENCE</small></div>}>
-              <HeroScene />
+              <HeroScene reducedMotion={Boolean(reducedMotion)} />
             </Suspense>
             <div className="hero-visual-index">Figure 01 <span>Interconnected systems</span></div>
           </div>
