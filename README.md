@@ -46,7 +46,7 @@ Company email, WhatsApp and social profile values remain empty and are hidden fr
 - Portfolio items are concept demonstrations, not client case studies. Replace them only with approved project evidence.
 - Insights are future editorial themes, not fabricated published articles.
 - No client counts, testimonials, project results, company address, email, response time or social profile has been invented.
-- A Zentaro logo asset has not been supplied yet, so the header uses a text wordmark instead of displaying the old AXOR logo.
+- The official Zentaro logo has not been supplied yet, so the header uses a text wordmark that can be replaced when the approved logo is ready.
 
 ## Main files
 
