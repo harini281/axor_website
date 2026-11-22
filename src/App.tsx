@@ -1,4 +1,4 @@
-import { lazy, Suspense, useMemo, useState, type FormEvent } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState, type FormEvent } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowDown, ArrowDownRight, ArrowUpRight, BrainCircuit,
@@ -11,27 +11,31 @@ const HeroScene = lazy(() => import('./components/HeroScene'))
 const AmbientScene = lazy(() => import('./components/AmbientScene'))
 
 const services = [
-  { n: '01', icon: BrainCircuit, title: 'AI-powered applications', line: 'Make intelligence part of the product.', detail: 'Design and develop applications that use AI to make experiences more useful, workflows more adaptive and decisions more informed.', capabilities: ['LLM-powered product features', 'Knowledge assistants and retrieval', 'Computer vision integrations'], value: 'Create differentiated digital experiences and bring practical intelligence closer to your users.' },
-  { n: '02', icon: Code2, title: 'Custom software development', line: 'Software shaped around your operation.', detail: 'Build dependable platforms, APIs and business systems around the processes that make your organisation unique.', capabilities: ['Backend and API engineering', 'Cloud-ready application architecture', 'System integration and modernization'], value: 'Replace disconnected tools and manual work with software designed for the way your business runs.' },
-  { n: '03', icon: Network, title: 'AI agents & intelligent automation', line: 'Move repetitive work into reliable flows.', detail: 'Connect tools, information and well-defined actions into workflows that help people spend more time on meaningful work.', capabilities: ['Agentic workflow design', 'Business process automation', 'Human-in-the-loop controls'], value: 'Reduce repetitive effort while keeping people informed and in control.' },
-  { n: '04', icon: Layers3, title: 'Machine learning solutions', line: 'Turn patterns into useful predictions.', detail: 'Explore, prepare and model data to support forecasting, classification, recommendation and other decision-support needs.', capabilities: ['Model development and evaluation', 'Feature engineering', 'Deployment and monitoring foundations'], value: 'Make better use of available data with models evaluated against the problem they are meant to solve.' },
-  { n: '05', icon: Database, title: 'Data science & analytics', line: 'Give your data a clearer direction.', detail: 'Create trusted data foundations and analytical experiences that help teams understand what is happening and why.', capabilities: ['Data preparation and pipelines', 'Dashboards and business intelligence', 'Exploratory and statistical analysis'], value: 'Move from scattered information to clearer operational and strategic decisions.' },
-  { n: '06', icon: Smartphone, title: 'Web & mobile applications', line: 'Useful experiences, across devices.', detail: 'Deliver accessible, responsive web and mobile products with a focus on clarity, performance and maintainability.', capabilities: ['Responsive web applications', 'Cross-platform mobile experiences', 'UX engineering and integrations'], value: 'Give customers and teams a consistent digital experience wherever they work.' },
-  { n: '07', icon: Sparkles, title: 'AI consulting', line: 'Find the right problem before the tool.', detail: 'Assess opportunities, constraints and readiness to build a practical roadmap for adopting AI responsibly.', capabilities: ['AI opportunity discovery', 'Solution feasibility and architecture', 'Adoption and implementation roadmaps'], value: 'Invest in technology with a clear purpose, realistic scope and a path to delivery.' },
+  { n: '01', icon: BrainCircuit, title: 'AI & Intelligent Systems', line: 'Turn complex work into clearer decisions', detail: 'When knowledge is scattered and repetitive work slows people down, intelligent systems can connect information and support better decisions. We design practical AI features with clear boundaries and human oversight.', capabilities: ['LLM and knowledge-based product features', 'AI agents and workflow automation', 'Machine learning and computer vision'], value: 'Put useful intelligence into products and workflows without losing sight of accuracy, accountability or the people using them.' },
+  { n: '02', icon: Code2, title: 'Software Engineering', line: 'Build software around the way work happens', detail: 'When disconnected tools and manual processes get in the way, purpose-built software can create a more dependable foundation. We engineer web, mobile and backend systems around real operational needs.', capabilities: ['Web and mobile application development', 'Backend services, APIs and integrations', 'Application architecture and modernization'], value: 'Give teams maintainable systems that fit their processes and can evolve as requirements change.' },
+  { n: '03', icon: Database, title: 'Data & Analytics', line: 'Make scattered data useful', detail: 'When important information lives across spreadsheets, applications and databases, it is difficult to see what is happening. We help organise data and make it easier to understand.', capabilities: ['Data preparation and engineering', 'Business intelligence and dashboards', 'Exploratory analysis and reporting'], value: 'Create a clearer view of operations so teams can make informed decisions from data they understand.' },
+  { n: '04', icon: ShieldCheck, title: 'Cybersecurity', line: 'Make security part of the engineering process', detail: 'As applications and data become more connected, security needs to be considered throughout design and delivery. We focus on practical safeguards and security-minded development.', capabilities: ['Application and API security practices', 'Risk-aware design and access controls', 'Secure development and data protection foundations'], value: 'Reduce avoidable exposure by making security an explicit part of how digital systems are planned and built.' },
+  { n: '05', icon: Layers3, title: 'Cloud & DevOps', line: 'Make delivery and infrastructure more dependable', detail: 'When environments are difficult to maintain and releases are inconsistent, cloud and DevOps practices can improve the way software is delivered and operated.', capabilities: ['Cloud-ready application architecture', 'Containerisation and CI/CD foundations', 'Deployment, monitoring and operational practices'], value: 'Create repeatable delivery workflows and infrastructure that can be maintained with greater confidence.' },
+  { n: '06', icon: Globe2, title: 'Digital Growth', line: 'Give your digital presence a clearer purpose', detail: 'A website or digital channel should help people understand what a business offers and how to take the next step. We connect digital experience with practical growth foundations.', capabilities: ['Search engine optimisation foundations', 'Content and digital channel planning', 'Analytics and conversion experience reviews'], value: 'Make digital channels easier to discover, understand and improve using clear goals and measurable signals.' },
+  { n: '07', icon: Sparkles, title: 'Design & Consulting', line: 'Find the right direction before building', detail: 'When the problem, audience or solution is not yet clear, thoughtful discovery helps teams make better decisions before investing in implementation.', capabilities: ['Product discovery and solution definition', 'UX and interface design', 'Technology planning and digital transformation guidance'], value: 'Align people, priorities and technical direction around a solution that is useful, achievable and considered.' },
 ]
+
 
 const technologyGroups = [
-  { category: 'AI & MACHINE LEARNING', tools: ['Python', 'PyTorch', 'TensorFlow', 'Scikit-learn', 'LLM integration', 'Computer Vision'] },
-  { category: 'APPLICATION ENGINEERING', tools: ['React', 'TypeScript', 'Node.js', 'ASP.NET Core', 'REST APIs', 'Flutter'] },
-  { category: 'DATA & PLATFORMS', tools: ['PostgreSQL', 'MongoDB', 'Redis', 'Power BI', 'ETL pipelines', 'Cloud services'] },
-  { category: 'ENGINEERING & DELIVERY', tools: ['Docker', 'GitHub Actions', 'CI/CD', 'Automated testing', 'API security', 'Observability'] },
+  { category: 'AI and intelligent systems', tools: ['Python', 'Scikit-learn', 'LLM integration', 'Computer vision'] },
+  { category: 'Application engineering', tools: ['React', 'TypeScript', 'Node.js', 'ASP.NET Core', 'REST APIs', 'Flutter'] },
+  { category: 'Data and analytics', tools: ['PostgreSQL', 'MongoDB', 'Power BI', 'ETL pipelines'] },
+  { category: 'Security and delivery', tools: ['API security', 'Docker', 'GitHub Actions', 'CI/CD', 'Cloud services', 'Monitoring'] },
 ]
 
-const axorPrinciples = [
-  { number: '01', quote: 'Technology is only intelligent when it makes life or work meaningfully better.', label: 'PURPOSE BEFORE COMPLEXITY' },
-  { number: '02', quote: 'Build with curiosity. Engineer with discipline. Improve with evidence.', label: 'HOW WE WORK' },
-  { number: '03', quote: 'The future belongs to teams that turn ambitious ideas into dependable systems.', label: 'WHAT WE BELIEVE' },
+
+const principles = [
+  { number: '01', kanji: '改善', name: 'Kaizen', title: 'Continuous Improvement', description: 'We believe progress is a continuous process. We consistently refine our ideas, processes and technologies to deliver better outcomes.', application: 'Continuous product and process improvement.' },
+  { number: '02', kanji: 'こだわり', name: 'Kodawari', title: 'Dedication to Excellence', description: 'We care deeply about the details. We pursue thoughtful engineering, quality craftsmanship and solutions built with intention.', application: 'Engineering quality and attention to detail.' },
+  { number: '03', kanji: '絆', name: 'Kizuna', title: 'Connection & Trust', description: 'We build meaningful relationships through collaboration, transparency and mutual respect. Strong connections create stronger outcomes.', application: 'Client relationships and collaborative teamwork.' },
+  { number: '04', kanji: '我慢', name: 'Gaman', title: 'Resilience & Perseverance', description: 'We approach challenges with patience, discipline and determination. Meaningful progress requires consistency and the courage to overcome obstacles.', application: 'Persistence through complex technical challenges.' },
 ]
+
 
 const projects = [
   { type: 'AI APPLICATIONS', title: 'Intelligent product experiences', desc: 'A demonstration space for applied AI patterns, including structured assistants and context-aware workflows.', label: 'Concept demonstration' },
@@ -54,7 +58,10 @@ const reveal = {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeService, setActiveService] = useState(0)
-  const [formState, setFormState] = useState<'idle' | 'ready'>('idle')
+  const [selectedService, setSelectedService] = useState('')
+  const [activeSection, setActiveSection] = useState('#top')
+  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [formMessage, setFormMessage] = useState('')
   const reducedMotion = useReducedMotion()
   const navItems = useMemo(() => [
     ['About', '#about'], ['Services', '#services'], ['Industries', '#industries'], ['Technology', '#technology'], ['Our Work', '#work'], ['Insights', '#insights'],
@@ -62,24 +69,53 @@ function App() {
 
   const whatsappUrl = (message: string) => `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(message)}`
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+  async function submitInquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const name = String(data.get('name') ?? '').trim()
-    const email = String(data.get('email') ?? '').trim()
-    const company = String(data.get('company') ?? '').trim()
-    const service = String(data.get('service') ?? '').trim()
-    const description = String(data.get('description') ?? '').trim()
-    const budget = String(data.get('budget') ?? '').trim()
-    const timeline = String(data.get('timeline') ?? '').trim()
-    const message = [
-      'Hello AXOR Technologies, I would like to discuss a project.',
-      `Name: ${name}`, `Business email: ${email}`, `Company: ${company || 'Not provided'}`,
-      `Service of interest: ${service}`, `Budget: ${budget || 'Not provided'}`, `Timeline: ${timeline || 'Not provided'}`, `Project description: ${description}`,
-    ].join('\n')
-    setFormState('ready')
-    window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer')
+    if (!siteConfig.contactEndpoint) {
+      setFormState('error')
+      setFormMessage('Online enquiries are not connected yet. A verified secure enquiry endpoint must be configured before submissions can be accepted.')
+      return
+    }
+    const form = event.currentTarget
+    const data = new FormData(form)
+    const payload = {
+      name: String(data.get('name') ?? '').trim(),
+      email: String(data.get('email') ?? '').trim(),
+      company: String(data.get('company') ?? '').trim(),
+      service: String(data.get('service') ?? '').trim(),
+      budget: String(data.get('budget') ?? '').trim(),
+      timeline: String(data.get('timeline') ?? '').trim(),
+      description: String(data.get('description') ?? '').trim(),
+    }
+    setFormState('submitting')
+    setFormMessage('')
+    try {
+      const response = await fetch(siteConfig.contactEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      if (!response.ok) throw new Error('Enquiry submission failed')
+      setFormState('success')
+      setFormMessage('Your enquiry has been sent. Thank you for contacting Zentaro.')
+      form.reset()
+      setSelectedService('')
+    } catch {
+      setFormState('error')
+      setFormMessage('Your enquiry could not be sent. Please try again later.')
+    }
   }
+
+  useEffect(() => {
+    const targets = navItems.map(([, href]) => document.querySelector<HTMLElement>(href)).filter((target): target is HTMLElement => Boolean(target))
+    if (!('IntersectionObserver' in window)) return
+    const observer = new IntersectionObserver((entries) => {
+      const current = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (current?.target.id) setActiveSection(`#${current.target.id}`)
+    }, { rootMargin: '-22% 0px -62% 0px', threshold: [0, 0.2, 0.5, 0.75] })
+    targets.forEach((target) => observer.observe(target))
+    return () => observer.disconnect()
+  }, [navItems])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -87,15 +123,14 @@ function App() {
     <div className="site-shell">
       <a className="skip-link" href="#main">Skip to content</a>
       <header className="topbar">
-        <a className="brand" href="#top" aria-label="AXOR Technologies home">
-          <img src="/images/axor-logo.jpg" alt="AXOR emblem" />
-          <span><b>AXOR</b><small>TECHNOLOGIES</small></span>
+        <a className="brand" href="#top" aria-label="ZENTARO Technologies home">
+          <span className="brand-copy"><b>ZENTARO</b><small>Technologies</small></span>
         </a>
         <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>
           {menuOpen ? <X /> : <Menu />}
         </button>
-        <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation">
-          {navItems.map(([label, href]) => <a key={label} href={href} onClick={closeMenu}>{label}</a>)}
+        <nav className={menuOpen ? 'nav-links open' : 'nav-links'} aria-label="Main navigation" onKeyDown={(event) => { if (event.key === 'Escape') closeMenu() }}>
+          {navItems.map(([label, href]) => <a key={label} href={href} onClick={closeMenu} aria-current={activeSection === href ? 'location' : undefined}>{label}</a>)}
           <a className="nav-cta" href="#contact" onClick={closeMenu}>Let’s Talk <ArrowUpRight size={15} /></a>
         </nav>
       </header>
@@ -105,9 +140,9 @@ function App() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-copy">
             <motion.div initial="hidden" animate="visible" variants={reveal}>
-              <div className="eyebrow"><span /> AI-FIRST TECHNOLOGY COMPANY</div>
-              <h1>Engineering<br /><em>Intelligence.</em><br />Building What’s Next<span className="gold-dot">.</span></h1>
-              <p className="hero-lede">We bring software engineering, AI, cybersecurity, cloud and digital growth together to help businesses innovate, automate operations, strengthen security and scale with confidence.</p>
+              <div className="eyebrow"><span /> Engineering and intelligent systems</div>
+              <h1>Engineering <em>Intelligence.</em><br />Building What's Next.</h1>
+              <p className="hero-lede">We engineer intelligent digital solutions that help businesses innovate, automate operations, strengthen security and accelerate growth.</p>
               <div className="hero-actions">
                 <a className="button button-gold" href="#services">Explore Capabilities <ArrowUpRight size={17} /></a>
                 <a className="text-link" href="#contact">Discuss a Project <ArrowDownRight size={17} /></a>
@@ -118,18 +153,18 @@ function App() {
             <Suspense fallback={<div className="scene-fallback"><span>AX</span><small>ENGINEERING INTELLIGENCE</small></div>}>
               <HeroScene />
             </Suspense>
-            <div className="hero-visual-index">FIG. 01 <span>INTELLIGENT SYSTEMS</span></div>
+            <div className="hero-visual-index">Figure 01 <span>Interconnected systems</span></div>
           </div>
-          <div className="hero-bottom"><span>STRATEGY · ENGINEERING · INTELLIGENCE</span><a href="#about">DISCOVER AXOR <ArrowDown size={13} /></a></div>
+          <div className="hero-bottom"><span>Strategy · Engineering · Intelligence</span><a href="#about">Discover Zentaro <ArrowDown size={13} /></a></div>
         </section>
 
         <section className="intro section-pad" id="about">
-          <div className="section-index">01 / ABOUT AXOR</div>
+          <div className="section-index">01 / ABOUT ZENTARO</div>
           <div className="intro-content">
             <h2>Technology should<br />create <em>possibility.</em></h2>
             <div className="intro-aside">
-              <p>AXOR Technologies is an AI-first technology company focused on intelligent software, automation and digital solutions. We bring business context and engineering together to make complex challenges more approachable.</p>
-              <p className="muted">Thoughtful by design. Practical in execution. Built to evolve.</p>
+              <p>Zentaro Technologies is an engineering company working across intelligent systems, software, data, security, cloud and digital experiences. We bring business context and engineering together to make complex challenges more approachable.</p>
+              <p className="muted">Technology defines what we build. Our principles define how we build it.</p>
             </div>
           </div>
           <div className="principle-strip"><span>01 — UNDERSTAND THE PROBLEM</span><span>02 — ENGINEER THE SOLUTION</span><span>03 — BUILD FOR WHAT’S NEXT</span></div>
@@ -141,11 +176,11 @@ function App() {
 
         <section className="capabilities section-pad" id="services">
           <div className="section-heading">
-            <div><div className="section-index">02 / OUR CAPABILITIES</div><h2>Technology that<br /><em>moves work forward.</em></h2></div>
+            <div><div className="section-index">02 / Capabilities</div><h2>Technology that<br /><em>moves work forward.</em></h2></div>
             <p>We focus on the business challenge first, then bring the right combination of engineering, data and AI to address it.</p>
           </div>
           <div className="services-experience">
-            <div className="service-selector" role="tablist" aria-label="AXOR services">
+            <div className="service-selector" role="tablist" aria-label="ZENTARO services">
               {services.map((service, index) => {
                 const Icon = service.icon
                 return <button className={activeService === index ? 'service-tab active' : 'service-tab'} key={service.n} role="tab" aria-selected={activeService === index} aria-controls="service-detail" onClick={() => setActiveService(index)}>
@@ -156,10 +191,10 @@ function App() {
             <motion.div className="service-detail" id="service-detail" role="tabpanel" key={activeService} initial={reducedMotion ? false : { opacity: 0, x: 18 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
               {(() => { const s = services[activeService]; const Icon = s.icon; return <>
                 <div className="detail-icon"><Icon size={27} strokeWidth={1.35} /></div>
-                <span className="detail-kicker">{s.n} / {s.title.toUpperCase()}</span>
+                <span className="detail-kicker">{s.n} / {s.title}</span>
                 <h3>{s.line}</h3><p className="detail-description">{s.detail}</p>
                 <div className="detail-columns"><div><b>TECHNICAL CAPABILITIES</b>{s.capabilities.map(item => <span key={item}><CheckCircle2 size={14} />{item}</span>)}</div><div><b>BUSINESS VALUE</b><p>{s.value}</p></div></div>
-                <a className="detail-link" href="#contact">Discuss this capability <ArrowUpRight size={16} /></a>
+                <a className="detail-link" href="#contact" onClick={() => setSelectedService(s.title)}>Discuss this capability <ArrowUpRight size={16} /></a>
               </> })()}
             </motion.div>
           </div>
@@ -167,7 +202,7 @@ function App() {
 
         <section className="industries section-pad" id="industries">
           <div className="section-heading">
-            <div><div className="section-index">03 / INDUSTRIES</div><h2>Technology shaped<br /><em>around your world.</em></h2></div>
+            <div><div className="section-index">03 / Industries</div><h2>Technology shaped<br /><em>around your world.</em></h2></div>
             <p>Different industries face different constraints. We start with the context, workflows and people involved before recommending a technical approach.</p>
           </div>
           <div className="industry-grid">
@@ -185,9 +220,29 @@ function App() {
           <p className="section-footnote">These are potential areas of application, not claims of completed client engagements.</p>
         </section>
 
+        <section className="work section-pad" id="work">
+          <div className="section-heading">
+            <div><div className="section-index">06 / Selected work</div><h2>Ideas made<br /><em>tangible.</em></h2></div>
+            <p>Selected technical demonstrations show the kinds of problems we explore. These concepts are not presented as client case studies.</p>
+          </div>
+          <div className="work-visual-band">
+            <div><span>Prototype / exploration</span><b>Turning abstract challenges<br />into tangible systems.</b></div>
+            <Suspense fallback={<div className="ambient-fallback">ZENTARO / LAB</div>}>
+              <AmbientScene variant="orbit" />
+            </Suspense>
+            <span className="work-visual-index">INTERACTIVE STUDIES · 001—003</span>
+          </div>
+          <div className="project-grid">
+            {projects.map((project, index) => <motion.article className={`project-card project-${index + 1}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal} whileHover={reducedMotion ? undefined : { y: -8, rotateX: 2, rotateY: index === 1 ? -1.5 : 1.5 }}>
+              <div className="project-art"><div className="project-art-core">{index === 0 ? <BrainCircuit /> : index === 1 ? <Network /> : <Database />}</div><span>ZENTARO / CONCEPT 0{index + 1}</span><div className="project-art-orbit" /></div>
+              <div className="project-meta"><span>{project.type}</span><small>{project.label}</small></div><h3>{project.title}</h3><p>{project.desc}</p>
+            </motion.article>)}
+          </div>
+        </section>
+
         <section className="technology section-pad" id="technology">
           <div className="section-heading">
-            <div><div className="section-index">03 / OUR TECHNOLOGY LANDSCAPE</div><h2>The right tools.<br /><em>Thoughtfully applied.</em></h2></div>
+            <div><div className="section-index">04 / Technology landscape</div><h2>The right tools.<br /><em>Thoughtfully applied.</em></h2></div>
             <p>Technology choices should follow the problem, the product and the people who will depend on it. This is the engineering landscape we work across—not a claim that every tool is used in every project.</p>
           </div>
           <div className="technology-showcase">
@@ -198,17 +253,17 @@ function App() {
               </motion.article>)}
             </div>
             <div className="technology-object">
-              <Suspense fallback={<div className="ambient-fallback">AXOR / SYSTEMS</div>}>
+              <Suspense fallback={<div className="ambient-fallback">ZENTARO / SYSTEMS</div>}>
                 <AmbientScene variant="intelligence" />
               </Suspense>
-              <div className="object-caption"><span>FIG. 02 / INTELLIGENCE CORE</span><b>Systems that connect.<br />Ideas that compound.</b></div>
+              <div className="object-caption"><span>Figure 02 / Intelligence core</span><b>Systems that connect.<br />Ideas that compound.</b></div>
             </div>
           </div>
           <p className="technology-note">Our stack is selected case by case, with attention to maintainability, security, performance and long-term fit.</p>
         </section>
 
         <section className="approach section-pad" id="approach">
-          <div className="section-index">03 / OUR APPROACH</div>
+          <div className="section-index">05 / Engineering approach</div>
           <div className="approach-layout">
             <h2>Clarity first.<br /><em>Engineering</em><br />always.</h2>
             <div className="approach-copy"><p className="large-copy">The strongest technology begins with a clear understanding of the challenge.</p><p>We work from discovery through delivery with an emphasis on useful outcomes, considered architecture and responsible implementation.</p>
@@ -217,61 +272,56 @@ function App() {
           </div>
           <div className="approach-values"><div><ShieldCheck /><b>Security-minded</b><span>Considered from the beginning.</span></div><div><Fingerprint /><b>Human-centred</b><span>Designed around real people.</span></div><div><Globe2 /><b>Built to scale</b><span>Ready for changing needs.</span></div></div>
           <div className="approach-visual">
-            <div className="approach-visual-copy"><span>ENGINEERING IN LAYERS</span><b>From a clear foundation<br />to a connected system.</b><small>Architecture · Integration · Validation · Evolution</small></div>
+            <div className="approach-visual-copy"><span>Engineering in layers</span><b>From a clear foundation<br />to a connected system.</b><small>Architecture · Integration · Validation · Evolution</small></div>
             <Suspense fallback={<div className="ambient-fallback">STRUCTURE / 03</div>}>
               <AmbientScene variant="architecture" />
             </Suspense>
-            <span className="approach-visual-index">AXOR / ENGINEERING MODEL 03</span>
+            <span className="approach-visual-index">Zentaro / Engineering model 03</span>
+          </div>
+        </section>
+
+        
+
+        
+
+        <section className="principles section-pad" id="principles">
+          <div className="section-index">06 / The principles that guide us</div>
+          <div className="principles-heading">
+            <h2>More Than Technology.<br /><em>A Way of Thinking.</em></h2>
+            <p>Our work is shaped by principles that influence how we think, build, collaborate and grow. They are not simply values we display. They are standards we strive to practise in everything we do.</p>
+          </div>
+          <div className="principles-grid">
+            {principles.map((principle) => <article key={principle.number}>
+              <div className="principle-mark"><span>{principle.number}</span><strong lang="ja">{principle.kanji}</strong></div>
+              <h3>{principle.name}</h3>
+              <h4>{principle.title}</h4>
+              <p>{principle.description}</p>
+              <div className="principle-application"><span>Application</span><p>{principle.application}</p></div>
+            </article>)}
           </div>
         </section>
 
         <section className="leadership section-pad" id="leadership">
           <div className="section-heading">
-            <div><div className="section-index">04 / FOUNDING LEADERSHIP</div><h2>Meet the Minds<br /><em>Behind AXOR.</em></h2></div>
-            <p>Three perspectives. One vision. Building intelligent technology for tomorrow.</p>
+            <div><div className="section-index">07 / Founding leadership</div><h2>Meet the Minds<br /><em>Behind ZENTARO.</em></h2></div>
+            <p>Three co-founders. Shared principles. A considered approach to engineering.</p>
           </div>
           <div className="leadership-grid">
             {leadership.map((person, index) => <motion.article className="leader-card" key={person.name} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal} whileHover={reducedMotion ? undefined : { y: -7, rotateX: 1.5 }}>
-              <div className={`leader-portrait portrait-${index + 1}`}><img className={`leader-photo leader-photo-${index + 1}`} src={person.portrait} alt={`${person.name}, ${person.role} of AXOR Technologies`} /></div>
+              <div className={`leader-portrait portrait-${index + 1}`}><img className={`leader-photo leader-photo-${index + 1}`} src={person.portrait} alt={`${person.name}, ${person.role} of ZENTARO Technologies`} /></div>
               <div className="leader-info"><div className="leader-role">{person.role}</div><h3>{person.name}</h3><p>{person.intro}</p><div className="leader-focus"><b>AREA OF FOCUS</b><span>{person.focus}</span></div>
                 {person.linkedin ? <a className="leader-social" href={person.linkedin} target="_blank" rel="noreferrer" aria-label={`${person.name} on LinkedIn`}><Linkedin size={16} /></a> : <span className="leader-social unavailable" title="LinkedIn profile not configured"><Linkedin size={16} /></span>}
               </div>
             </motion.article>)}
           </div>
-          <p className="portrait-note">AXOR Technologies was founded by this leadership team: three co-founders bringing together business, technology and information security.</p>
+          <p className="portrait-note">ZENTARO Technologies was founded by this leadership team: three co-founders bringing together business, technology and information security.</p>
         </section>
 
-        <section className="beliefs section-pad" id="beliefs">
-          <div className="section-index">05 / THE AXOR MINDSET</div>
-          <div className="beliefs-heading"><h2>Ideas are easy.<br /><em>Execution is everything.</em></h2><p>These are original AXOR principles—not customer testimonials or quotations attributed to external people.</p></div>
-          <div className="belief-grid">
-            {axorPrinciples.map(item => <article key={item.number}><span>{item.number} / {item.label}</span><blockquote>“{item.quote}”</blockquote><small>— THE AXOR PRINCIPLES</small></article>)}
-          </div>
-        </section>
-
-        <section className="work section-pad" id="work">
-          <div className="section-heading">
-            <div><div className="section-index">05 / PROJECT EXPLORATIONS</div><h2>Ideas made<br /><em>tangible.</em></h2></div>
-            <p>A preview of the kinds of challenges and solution patterns AXOR is equipped to explore. These are concept demonstrations, not client case studies.</p>
-          </div>
-          <div className="work-visual-band">
-            <div><span>PROTOTYPE / EXPLORATION</span><b>Turning abstract challenges<br />into tangible systems.</b></div>
-            <Suspense fallback={<div className="ambient-fallback">AXOR / LAB</div>}>
-              <AmbientScene variant="orbit" />
-            </Suspense>
-            <span className="work-visual-index">INTERACTIVE STUDIES · 001—003</span>
-          </div>
-          <div className="project-grid">
-            {projects.map((project, index) => <motion.article className={`project-card project-${index + 1}`} key={project.title} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal} whileHover={reducedMotion ? undefined : { y: -8, rotateX: 2, rotateY: index === 1 ? -1.5 : 1.5 }}>
-              <div className="project-art"><div className="project-art-core">{index === 0 ? <BrainCircuit /> : index === 1 ? <Network /> : <Database />}</div><span>AXOR / CONCEPT 0{index + 1}</span><div className="project-art-orbit" /></div>
-              <div className="project-meta"><span>{project.type}</span><small>{project.label}</small></div><h3>{project.title}</h3><p>{project.desc}</p>
-            </motion.article>)}
-          </div>
-        </section>
+        
 
         <section className="insights section-pad" id="insights">
           <div className="section-heading">
-            <div><div className="section-index">07 / INSIGHTS & KNOWLEDGE</div><h2>Ideas worth<br /><em>thinking through.</em></h2></div>
+            <div><div className="section-index">08 / Insights & knowledge</div><h2>Ideas worth<br /><em>thinking through.</em></h2></div>
             <p>Our knowledge centre will focus on practical perspectives across the technologies and engineering disciplines that shape digital products.</p>
           </div>
           <div className="insight-grid">
@@ -285,44 +335,45 @@ function App() {
         </section>
 
         <section className="faq section-pad" id="faq">
-          <div className="section-heading"><div><div className="section-index">08 / FAQ</div><h2>Good questions.<br /><em>Clear answers.</em></h2></div><p>A few useful starting points before beginning a conversation with AXOR.</p></div>
+          <div className="section-heading"><div><div className="section-index">09 / FAQ</div><h2>Good questions.<br /><em>Clear answers.</em></h2></div><p>A few useful starting points before beginning a conversation with ZENTARO.</p></div>
           <div className="faq-list">
-            <details><summary>What kind of work does AXOR take on?</summary><p>AXOR’s capability areas include intelligent systems, software and application engineering, data and analytics, cybersecurity, cloud and infrastructure, digital growth, and design and consulting.</p></details>
+            <details><summary>What kind of work does ZENTARO take on?</summary><p>ZENTARO’s capability areas include intelligent systems, software and application engineering, data and analytics, cybersecurity, cloud and infrastructure, digital growth, and design and consulting.</p></details>
             <details><summary>How does a project usually begin?</summary><p>We begin by understanding the business context, users, objectives and constraints. From there, scope and a suitable technical direction can be discussed.</p></details>
             <details><summary>Can I enquire about only one service?</summary><p>Yes. You can select a specific service in the enquiry form and describe the challenge or outcome you have in mind.</p></details>
-            <details><summary>Does AXOR publish client results and testimonials?</summary><p>Only verified and approved project information should be published. Demonstrations and internal initiatives are labelled separately from client engagements.</p></details>
+            <details><summary>Does ZENTARO publish client results and testimonials?</summary><p>Only verified and approved project information should be published. Demonstrations and internal initiatives are labelled separately from client engagements.</p></details>
           </div>
         </section>
 
         <section className="contact section-pad" id="contact">
-          <div className="section-index">06 / CONNECT WITH AXOR</div>
+          <div className="section-index">10 / Contact</div>
           <div className="contact-layout">
             <div className="contact-copy"><h2>Have an ambitious idea?<br /><em>Let’s build it.</em></h2><p>Tell us about the challenge you’re trying to solve. Let’s explore how intelligent technology can move your business forward.</p>
-              <div className="availability"><span className="availability-dot" /><div><b>CONSULTATION AVAILABILITY</b><span>Available for project discussions and consultations after 7:00 PM (Sri Lanka Time · Asia/Colombo).</span></div></div>
-              <div className="contact-direct"><a href={whatsappUrl('Hello AXOR Technologies, I would like to start a conversation.')} target="_blank" rel="noreferrer"><MessageCircle size={18} /><span><small>WHATSAPP</small><b>{siteConfig.whatsappDisplay}</b></span><ArrowUpRight size={16} /></a>
-                {siteConfig.contactEmail ? <a href={`mailto:${siteConfig.contactEmail}`}><ArrowUpRight size={18} /><span><small>EMAIL</small><b>{siteConfig.contactEmail}</b></span></a> : <div className="email-unset"><MessageCircle size={18} /><span><small>EMAIL</small><b>Company email to be configured</b></span></div>}
+              <div className="contact-note"><p>Tell us what you are trying to make possible. We can begin with the problem, the people involved and the outcome you need.</p></div>
+              <div className="contact-direct">
+                {siteConfig.whatsappNumber && siteConfig.whatsappDisplay ? <a href={whatsappUrl('Hello Zentaro Technologies, I would like to start a conversation.')} target="_blank" rel="noreferrer"><MessageCircle size={18} /><span><small>WhatsApp</small><b>{siteConfig.whatsappDisplay}</b></span><ArrowUpRight size={16} /></a> : null}
+                {siteConfig.contactEmail ? <a href={`mailto:${siteConfig.contactEmail}`}><ArrowUpRight size={18} /><span><small>Email</small><b>{siteConfig.contactEmail}</b></span></a> : null}
               </div>
             </div>
             <form className="contact-form" onSubmit={submitInquiry}>
               <div className="form-heading"><span>PROJECT ENQUIRY</span><small>Tell us a little about your idea.</small></div>
               <label>Your name<input name="name" autoComplete="name" placeholder="Full name" required minLength={2} /></label>
               <label>Business email<input name="email" type="email" autoComplete="email" placeholder="you@company.com" required /></label>
-              <label>Company <span className="optional">OPTIONAL</span><input name="company" autoComplete="organization" placeholder="Your organisation" /></label>
-              <label>Service of interest<select name="service" required defaultValue=""><option value="" disabled>Select a capability</option>{services.map(service => <option key={service.n}>{service.title}</option>)}</select></label>
+              <label>Company or organisation<input name="company" autoComplete="organization" placeholder="Your organisation" required /></label>
+              <label>Service of interest<select name="service" required value={selectedService} onChange={(event) => setSelectedService(event.currentTarget.value)}><option value="" disabled>Select a capability</option>{services.map(service => <option key={service.n} value={service.title}>{service.title}</option>)}</select></label>
               <label>Project budget <span className="optional">OPTIONAL</span><select name="budget" defaultValue=""><option value="">Not decided yet</option><option>Under USD 1,000</option><option>USD 1,000–5,000</option><option>USD 5,000–15,000</option><option>USD 15,000+</option><option>Prefer to discuss</option></select></label>
               <label>Expected timeline <span className="optional">OPTIONAL</span><select name="timeline" defaultValue=""><option value="">Not decided yet</option><option>Immediately</option><option>Within 1 month</option><option>1–3 months</option><option>3–6 months</option><option>Exploring / planning</option></select></label>
               <label>Project description<textarea name="description" placeholder="What are you looking to build or improve?" required minLength={15} rows={4} /></label>
-              <button className="button button-gold form-submit" type="submit">Continue via WhatsApp <ArrowUpRight size={17} /></button>
-              {formState === 'ready' && <p className="form-feedback"><CheckCircle2 size={15} /> Your message is prepared. Complete sending it in WhatsApp.</p>}
-              <small className="form-privacy">Your form details are passed into a WhatsApp message. This website does not currently store enquiries.</small>
+              <button className="button button-gold form-submit" type="submit" disabled={formState === 'submitting'}>{formState === 'submitting' ? 'Sending enquiry' : 'Send enquiry'} <ArrowUpRight size={17} /></button>
+              {formMessage && <p className={formState === 'error' ? 'form-feedback form-error' : 'form-feedback'} role="status" aria-live="polite">{formMessage}</p>}
+              <small className="form-privacy">{siteConfig.contactEndpoint ? 'Your enquiry is sent to the configured secure endpoint.' : 'Online submissions are not enabled yet. A verified secure enquiry endpoint must be configured before this form can accept enquiries.'}</small>
             </form>
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="footer-main"><a className="footer-brand" href="#top">AXOR<span>.</span></a><p>Engineering intelligence.<br />Building what’s next.</p><div className="footer-social"><span>CONNECT</span>{socialItems.map(item => { const Icon = item.Icon; return item.url ? <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={15} /></a> : <span className="social-disabled" key={item.key} title={`${item.label} profile not configured`} aria-label={`${item.label} profile not configured`}><Icon size={15} /></span> })}</div></div>
-        <div className="footer-bottom"><a href="#faq">FAQ</a><a href="#contact">Careers & enquiries</a><span>© {new Date().getFullYear()} AXOR TECHNOLOGIES. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP <ArrowUpRight size={13} /></a><span>ASIA / COLOMBO · UTC+05:30</span></div>
+        <div className={socialItems.some(item => item.url) ? 'footer-main has-social' : 'footer-main'}><a className="footer-brand" href="#top">ZENTARO</a><p>Engineering intelligence.<br />Building what’s next.</p>{socialItems.some(item => item.url) && <div className="footer-social"><span>Connect</span>{socialItems.filter(item => item.url).map(item => { const Icon = item.Icon; return <a key={item.key} href={item.url} target="_blank" rel="noreferrer" aria-label={item.label}><Icon size={16} /></a> })}</div>}</div>
+        <div className="footer-bottom"><a href="#faq">FAQ</a><a href="#contact">Careers and enquiries</a><span>© {new Date().getFullYear()} ZENTARO TECHNOLOGIES. ALL RIGHTS RESERVED.</span><a href="#top">BACK TO TOP <ArrowUpRight size={13} /></a><span>ASIA / COLOMBO · UTC+05:30</span></div>
       </footer>
     </div>
   )
