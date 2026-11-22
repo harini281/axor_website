@@ -5,7 +5,7 @@ import { Environment } from '@react-three/drei'
 type SceneVariant = 'intelligence' | 'architecture' | 'orbit'
 
 function StaticStructure({ variant }: { variant: SceneVariant }) {
-  const gold = '#c49a5b'
+  const gold = '#1689ff'
   const steel = '#c9d1dc'
   return (
     <group>
@@ -66,8 +66,8 @@ export default function AmbientScene({ variant = 'intelligence', className = '' 
       {visible && (
         <Canvas dpr={[1, 1.25]} camera={{ position: [0, 0, 4.3], fov: 42 }} frameloop="demand" gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}>
           <ambientLight intensity={0.72} />
-          <directionalLight position={[3, 4, 4]} intensity={1.6} color="#f1e7d7" />
-          <directionalLight position={[-3, -1, 2]} intensity={0.5} color="#b4bfce" />
+          <directionalLight position={[3, 4, 4]} intensity={1.6} color="#eef0f5" />
+          <directionalLight position={[-3, -1, 2]} intensity={0.5} color="#a3a9b8" />
           <Environment preset="city" />
           <StaticStructure variant={variant} />
         </Canvas>
