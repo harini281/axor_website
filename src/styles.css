@@ -418,3 +418,84 @@ body,.site-shell { background:var(--navy); }
 .contact-copy h2 em,.approach h2 em,.section-heading h2 em { color:#8ad5ff; }
 .contact-direct>a { color:#8ad5ff; }
 .footer-brand span { color:#1689ff; }
+
+
+/* Single featured engineering visual */
+.approach-visual {
+  height:clamp(320px, 30vw, 420px);
+  margin-top:52px;
+  border:1px solid rgba(238,240,245,.11);
+  border-radius:18px;
+  overflow:hidden;
+  background:#11141c;
+  box-shadow:0 18px 55px rgba(0,0,0,.16);
+}
+.approach-visual:before {
+  inset:14px;
+  border:1px solid rgba(238,240,245,.055);
+  border-radius:10px;
+}
+.approach-visual .ambient-scene {
+  right:3%;
+  top:0;
+  width:48%;
+  height:100%;
+  min-height:0;
+}
+.approach-visual-copy {
+  left:5%;
+  max-width:54%;
+  gap:16px;
+}
+.approach-visual-copy>span {
+  color:#8ad5ff;
+  font-size:11px;
+  letter-spacing:.08em;
+}
+.approach-visual-copy>b {
+  font-size:clamp(25px,3.2vw,42px);
+  line-height:1.18;
+}
+.approach-visual-copy>small {
+  font-size:11px;
+  line-height:1.7;
+  color:#9eacbd;
+}
+.approach-visual-index {
+  font-size:10px;
+  letter-spacing:.04em;
+  color:#8292a5;
+}
+.ambient-scene canvas { pointer-events:none; }
+@media(max-width:650px) {
+  .approach-visual {
+    height:360px;
+    margin-top:36px;
+    border-radius:14px;
+  }
+  .approach-visual .ambient-scene {
+    right:-8%;
+    top:16%;
+    width:78%;
+    height:82%;
+    opacity:.92;
+  }
+  .approach-visual-copy {
+    left:7%;
+    top:14%;
+    max-width:88%;
+    transform:none;
+    gap:12px;
+  }
+  .approach-visual-copy>b {
+    font-size:clamp(22px,6vw,28px);
+  }
+  .approach-visual-copy>small {
+    max-width:235px;
+    font-size:10px;
+  }
+  .approach-visual-index { right:14px; bottom:12px; font-size:8px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .approach-visual { scroll-behavior:auto; }
+}
