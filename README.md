@@ -59,4 +59,4 @@ The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and
 
 ## Design reference credit
 
-The visual refinement follows the product-led direction of [Unslop by Damir Sokolovsky](https://github.com/heydamir/unslop): quiet ink surfaces, one restrained brand accent, clear type hierarchy and purposeful motion. The supplied Zentaro mark remains the source of the blue accent. Unslop is credited under its CC BY 4.0 license.
+The visual refinement follows the product-led direction of [Unslop by Damir Sokolovsky](https://github.com/heydamir/unslop): quiet ink surfaces, one restrained brand accent, clear type hierarchy and purposeful motion. The supplied transparent Zentaro mark is used in the header, footer and browser tab icon; its blue is the source of the restrained interface accent. Unslop is credited under its CC BY 4.0 license.
