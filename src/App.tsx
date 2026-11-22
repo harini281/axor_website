@@ -200,8 +200,8 @@ function App() {
             </div>
             <div className="philosophy-signoff">
               <div className="philosophy-signoff-brand">
-                <img src="/images/zentaro-mark.webp" alt="ZENTARO symbol" width="48" height="48" loading="lazy" decoding="async" />
-                <b>ZENTARO TECHNOLOGIES</b>
+                <img src="/images/zentaro-logo.webp" alt="ZENTARO Technologies logo" width="160" height="54" loading="lazy" decoding="async" />
+                
               </div>
               <span>Build with curiosity. Lead with purpose. Evolve without limits.</span>
             </div>
