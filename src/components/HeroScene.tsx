@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment } from '@react-three/drei'
 import * as THREE from 'three'
 
-function InterconnectedStructure() {
+function InterconnectedStructure({ reducedMotion }: { reducedMotion: boolean }) {
   const group = useRef<THREE.Group>(null)
   const pointer = useRef({ x: 0, y: 0 })
   const steel = useMemo(() => new THREE.MeshStandardMaterial({ color: '#c9d1dc', metalness: 0.72, roughness: 0.34 }), [])
@@ -42,7 +42,7 @@ export default function HeroScene({ reducedMotion = false }: { reducedMotion?: b
         <directionalLight position={[-3, -1, 2]} intensity={0.65} color="#aebccc" />
         <pointLight position={[0, -2, 3]} intensity={0.35} color="#c49a5b" />
         <Environment preset="city" />
-        <InterconnectedStructure />
+        <InterconnectedStructure reducedMotion={reducedMotion} />
       </Canvas>
       <div className="scene-label"><span>Zentaro / 001</span><span>Connected engineering</span></div>
     </div>
