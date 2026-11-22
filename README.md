@@ -46,7 +46,7 @@ The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and
 - Portfolio items are concept demonstrations, not client case studies. Replace them only with approved project evidence.
 - Insights are future editorial themes, not fabricated published articles.
 - No client counts, testimonials, project results, company address, email, response time or social profile has been invented.
-- The official Zentaro logo has not been supplied yet, so the header uses a text wordmark that can be replaced when the approved logo is ready.
+- The supplied Zentaro mark is referenced in the header and footer. The current repository uses the vector mark asset at `public/images/zentaro-mark.svg`; replace it with the original PNG when the image upload is approved.
 
 ## Main files
 
