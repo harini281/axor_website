@@ -36,7 +36,7 @@ function InterconnectedStructure({ reducedMotion }: { reducedMotion: boolean }) 
 export default function HeroScene({ reducedMotion = false }: { reducedMotion?: boolean }) {
   return (
     <div className="hero-scene" aria-label="Interconnected steel and brass rings representing connected engineering systems" role="img">
-      <Canvas dpr={[1, 1.4]} camera={{ position: [0, 0, 4.5], fov: 42 }} gl={{ antialias: true, alpha: true }}>
+      <Canvas dpr={[1, 1.4]} camera={{ position: [0, 0, 4.5], fov: 42 }} frameloop={reducedMotion ? 'demand' : 'always'} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.8} />
         <directionalLight position={[3, 4, 4]} intensity={1.8} color="#f3ead9" />
         <directionalLight position={[-3, -1, 2]} intensity={0.65} color="#aebccc" />
