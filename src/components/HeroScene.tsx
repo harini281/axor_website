@@ -10,7 +10,7 @@ function InterconnectedStructure() {
   const brass = useMemo(() => new THREE.MeshStandardMaterial({ color: '#c49a5b', metalness: 0.68, roughness: 0.32 }), [])
 
   useFrame((state, delta) => {
-    if (!group.current) return
+    if (reducedMotion || !group.current) return
     pointer.current.x = THREE.MathUtils.damp(pointer.current.x, state.pointer.y * 0.10, 2.0, delta)
     pointer.current.y = THREE.MathUtils.damp(pointer.current.y, state.pointer.x * 0.14, 2.0, delta)
     group.current.rotation.x = pointer.current.x
@@ -33,7 +33,7 @@ function InterconnectedStructure() {
   )
 }
 
-export default function HeroScene() {
+export default function HeroScene({ reducedMotion = false }: { reducedMotion?: boolean }) {
   return (
     <div className="hero-scene" aria-label="Interconnected steel and brass rings representing connected engineering systems" role="img">
       <Canvas dpr={[1, 1.4]} camera={{ position: [0, 0, 4.5], fov: 42 }} gl={{ antialias: true, alpha: true }}>
