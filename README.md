@@ -27,7 +27,7 @@ npm run preview
 - Service enquiry actions that preselect the chosen service in the contact form
 - Four guiding philosophies: Kaizen, Kodawari, Kizuna and Gaman
 - Three supplied founder portraits with their configured roles and supplied LinkedIn URLs
-- Technical demonstrations clearly distinguished from verified client case studies
+- Concept demonstrations clearly distinguished from client case studies and measured results
 - Interconnected steel-and-brass hero artwork, with secondary static 3D studies loaded near the viewport
 - Reduced motion support, responsive layouts, focus styles and accessible form feedback
 
@@ -44,7 +44,7 @@ The public company email is configured as `arudkumaranv@gmail.com`. WhatsApp and
 - Founder portraits are the three photographs supplied for the leadership profiles.
 - The LinkedIn URLs are profile URLs previously supplied for the founders; confirm they remain current before launch.
 - Portfolio items are concept demonstrations, not client case studies. Replace them only with approved project evidence.
-- Insights are future editorial themes, not fabricated published articles.
+- Insights are topic directions, not fabricated published articles.
 - No client counts, testimonials, project results, company address, email, response time or social profile has been invented.
 - The supplied Zentaro mark is referenced in the header and footer. The current repository uses the vector mark asset at `public/images/zentaro-mark.svg`; replace it with the original PNG when the image upload is approved.
 
